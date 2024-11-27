@@ -89,3 +89,57 @@ if (hacker1 > hacker2) {
 }
 
 // ========== End of Iteration 3 ========== //
+
+
+
+// ========== Bonus 1 ========== //
+
+/*
+Go to lorem ipsum generator and:
+• Generate 3 paragraphs. Store the text in a variable type of string.
+• Make your program count the number of words in the string.
+• Make your program count the number of times the Latin word et appears.
+*/
+
+// Step 1: Store the Lorem Ipsum text in a string variable
+let loremText = `
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at et dui. 
+Pellentesque et facilisis ligula. Ut pharetra, nisi a fermentum aliquet, 
+et volutpat nisi sapien id purus. Sed et lectus lorem. 
+
+Vestibulum et orci eu metus malesuada tincidunt. Etiam vel nisl at lacus facilisis euismod. 
+Maecenas et elit varius, hendrerit nunc sed, viverra est. Duis et nisi vitae felis consectetur pharetra. 
+
+Curabitur at metus sit amet tortor viverra luctus et nec elit. Integer id nibh et magna sollicitudin iaculis. 
+Suspendisse potenti. Fusce eget et purus a massa lacinia mollis. Vivamus et magna arcu.
+`;
+
+// Step 2: Initialize counters
+let wordCount = 0;
+let etCount = 0;
+let currentWord = "";
+
+// Step 3: Loop through the text character by character
+for (let i = 0; i <= loremText.length; i++) {
+    let char = loremText[i];
+    
+    // If we encounter a space, punctuation, or end of string, process the word
+    if (char === " " || char === "\n" || char === "\t" || i === loremText.length || /[.,!?]/.test(char)) {
+        if (currentWord) {
+            wordCount++; // Increment the word count
+            if (currentWord.toLowerCase() === "et") {
+                etCount++; // Increment the "et" count if it's a match
+            }
+            currentWord = ""; // Reset the word
+        }
+    } else {
+        // Build the current word
+        currentWord += char;
+    }
+}
+
+// Step 4: Output the results
+console.log(`Word Count: ${wordCount}`);
+console.log(`Occurrences of "et": ${etCount}`);
+
+// ========== End of Bonus 1 ========== //
