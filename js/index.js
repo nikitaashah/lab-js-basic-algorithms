@@ -143,3 +143,62 @@ console.log(`Word Count: ${wordCount}`);
 console.log(`Occurrences of "et": ${etCount}`);
 
 // ========== End of Bonus 1 ========== //
+
+
+
+// ========== Bonus 2 ========== //
+
+/*
+Create a new variable phraseToCheck and have it contain some string value. Write a code that will check if the value we assigned to this variable is a Palindrome. Here are some examples of palindromes:
+"A man, a plan, a canal, Panama!"
+"Amor, Roma"
+"race car"
+"stack cats"
+"step on no pets"
+"taco cat"
+"put it up"
+"Was it a car or a cat I saw?" and "No 'x' in Nixon".
+*/
+
+// Step 1: Initialize the variable
+let phraseToCheck = "A man, a plan, a canal, Panama!";
+
+// Step 2: Checking if a string is palindrome or not
+
+// Normalize the string: remove non-alphanumeric characters and convert to lowercase
+let cleanedPhrase = "";
+
+for (let i = phraseToCheck.length - 1; i >= 0; i--) {
+    let temp = phraseToCheck[i];
+    if (temp === " " || temp === "\n" || temp === "\t" || i === phraseToCheck.length || /[.,!?]/.test(temp)) {
+        continue;
+    } else {
+        cleanedPhrase += temp.toLowerCase();
+    }
+}
+
+// Use two pointers to compare characters from the start and end
+let left = 0;
+
+let right = cleanedPhrase.length - 1;
+
+let palindrome = true;
+
+while(left < right) {
+    if (cleanedPhrase[left] !== cleanedPhrase[right]) {
+        palindrome = false;
+        break;
+    } else {
+        left++;
+        right--;
+        continue;
+    }
+}
+
+// If we complete the loop without mismatches, it's a palindrome
+if (palindrome === true) {
+    console.log(`"${phraseToCheck}" is a palindrome string.`);
+} else {
+    console.log(`"${phraseToCheck}" is not a palindrom string.`);
+}
+// ========== End of Bonus 2 ========== //
